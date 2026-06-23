@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #F37021;
+  --color-brand-dark: #D95D1A;
+  --color-brand-light: #FF8F4D;
+  --color-slate-bg: #F8FAFC;
+  --color-slate-text: #1E293B;
+  --color-slate-muted: #64748B;
+}
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-slate-bg text-slate-text font-sans antialiased;
+    background-color: #F8FAFC;
+    background-image: 
+      radial-gradient(circle at 0% 0%, hsla(28, 100%, 74%, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, hsla(28, 100%, 74%, 0.4) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/85 backdrop-blur-[16px] border border-white/20 shadow-xl rounded-2xl;
+  }
+  
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-[16px] border-b border-white/20 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-primary to-brand-light text-white font-medium py-2 px-4 rounded-xl shadow-lg hover:shadow-brand-primary/40 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-slate-200 text-slate-text font-medium py-2 px-4 rounded-xl shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .input-field {
+    @apply w-full bg-white/70 border border-slate-200 rounded-xl px-4 py-3 text-slate-text focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all duration-300 placeholder-slate-muted;
+  }
+}
+
+/* Custom Scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
